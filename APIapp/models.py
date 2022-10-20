@@ -1,6 +1,7 @@
 from email.policy import default
 from tabnanny import verbose
 from django.db import models
+from django.contrib.auth.models import User  #TO USE DJANGO AUTH USER MODEL 
 
 # Create your models here.
 class Category(models.Model):
@@ -24,6 +25,7 @@ class Book(models.Model):
     description = models.TextField()
     img_url = models.URLField()
     status = models.BooleanField(default=True)
+    creator = models.ForeignKey('auth.User', related_name = 'books', on_delete = models.CASCADE)
     created_on = models.DateField(auto_now_add = True)
 
     def __str__(self):
@@ -37,12 +39,13 @@ class Book(models.Model):
 class Product(models.Model):
     product_tag = models.CharField(max_length = 15)
     name = models.CharField(max_length = 100)
-    category = models.ForeignKey(Category, related_name="products", on_delete =models.CASCADE)
+    category = models.ForeignKey(Category, related_name="products", on_delete =models.CASCADE, null=True)
     price = models.IntegerField()
     description = models.TextField()
     quantity =models.IntegerField()
     created_on = models.DateField(auto_now_add = True)
     img_url = models.URLField()
+    creator = models.ForeignKey('auth.User', related_name = 'products', on_delete = models.CASCADE, null=True)
     status = models.BooleanField(default=True)
 
     def __str__(self):
