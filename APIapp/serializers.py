@@ -3,6 +3,36 @@ from rest_framework import serializers      #TO SERIALIZE A DATA TO A JSON FORMA
 from .models import *
 from django.contrib.auth.models import User
 
+#   FOR REGISTRING OUR USER
+class RegistrationSerializer(serializers.ModelSerializer):
+
+    # TO OVERRIDE THE FIELDS 
+    email = serializers.EmailField(min_length = 5)
+    username = serializers.CharField(max_length = 30)
+    password = serializers.CharField(min_length = 4, write_only = True)
+
+    class Meta:
+        fields = ('first_name', 'last_name', 'id', 'email', 'username', 'password')
+        model = User     # FROM INBUILT JWT AUTH
+
+    #  QUERY TO VALIDATE DATA FROM USER
+    def validate(self, args):
+        email = args.get('email', None)
+        username = args.get('username', None)
+        if User.objects.filter(email=email).exists():
+            raise serializers.ValidationError({'email': ( 'email already exists' )})        #ERROR MSG
+        if User.objects.filter(username=username).exists():
+            raise serializers.ValidationError({'username': ( 'username, already exists' )})    
+
+        return super().validate(args)  
+
+
+    #  CREATE USER USING THE VALID INFO
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)      
+
+
+
 
 class CategorySerializer (serializers.ModelSerializer):
 

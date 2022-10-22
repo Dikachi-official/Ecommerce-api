@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework.authtoken.views import obtain_auth_token
+from APIapp.views import RegistrationAPIView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView  #IMPORT INBULT CLASS PROGRAMS FROM JWT TO USE IN REG,LOGIN AND REFRESHTOKEN 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include('APIapp.urls'))
+    path('api/',include('APIapp.urls')),
+    path('api/register',RegistrationAPIView.as_view(), name='regiater'),
+    path('api/login', TokenObtainPairView.as_view(), name='login'),
+    path('api/refresh-token', TokenRefreshView.as_view(), name='refresh-token'),
 ]
