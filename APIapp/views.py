@@ -77,7 +77,7 @@ class DetailUser(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer    
 
 
-
+#CART VIEW
 class ListCart(generics.ListCreateAPIView):
     queryset  = Cart.objects.all()  
     serializer_class = CartSerializer
