@@ -3,6 +3,7 @@ from rest_framework import serializers      #TO SERIALIZE A DATA TO A JSON FORMA
 from .models import *
 from django.contrib.auth.models import User
 
+
 #   FOR REGISTRING OUR USER
 class RegistrationSerializer(serializers.ModelSerializer):
 
@@ -90,7 +91,7 @@ class UserSerializer(serializers.ModelSerializer):
     products = serializers.PrimaryKeyRelatedField(many=True, queryset=Product.objects.all())
 
     class Meta:
-        fields = (         #FOR THE USER MODEL
+        fields = (         # FOR THE USER MODEL
             'id',
             'username',
             'email',
@@ -98,4 +99,33 @@ class UserSerializer(serializers.ModelSerializer):
             'products'
         )
 
-        model = User
+        model = User     # FROM DJANGO AUTH MODELS
+
+
+
+class CartUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        fields = (
+            'username',
+            'email'
+        )
+
+        model = User     # FROM DJANGO AUTH MODELS
+
+
+#CART SERIALIZER
+class CartSerializer(serializers.ModelSerializer):
+
+    books = BookSerializer(read_only=True, many=True)
+    products = ProductSerializer(read_only=True, many=True)
+
+    class Meta:
+        fields = (
+            'cart_id',
+            'created_at',
+            'products',
+            'books'
+        )
+
+        model = Cart

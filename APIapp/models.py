@@ -25,7 +25,7 @@ class Book(models.Model):
     description = models.TextField()
     img_url = models.URLField()
     status = models.BooleanField(default=True)
-    creator = models.ForeignKey('auth.User', related_name = 'books', on_delete = models.CASCADE)
+    creator = models.ForeignKey('auth.User', related_name = 'books', on_delete = models.CASCADE, null=True)
     created_on = models.DateField(auto_now_add = True)
 
     def __str__(self):
@@ -39,7 +39,7 @@ class Book(models.Model):
 class Product(models.Model):
     product_tag = models.CharField(max_length = 15)
     name = models.CharField(max_length = 100)
-    category = models.ForeignKey(Category, related_name="products", on_delete =models.CASCADE, null=True)
+    category = models.ForeignKey(Category, related_name="products", on_delete = models.CASCADE)
     price = models.IntegerField()
     description = models.TextField()
     quantity =models.IntegerField()
@@ -54,3 +54,17 @@ class Product(models.Model):
     class Meta:
         ordering = ['-created_on']
 
+
+
+# FOR CART
+class Cart(models.Model):
+    cart_id =  models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
+    created_at = models.DateTimeField(auto_now_add = True)
+    books = models.ManyToManyField(Book)       #TO EXIST IN THE CART
+    products = models.ManyToManyField(Product) #"    "   "   "  CART
+
+    def __str__(self):
+        return f"(self.cart_id)"
+
+    class Meta:
+        ordering = ['cart_id', '-created_at']

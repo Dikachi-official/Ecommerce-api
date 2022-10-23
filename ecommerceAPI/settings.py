@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'APIapp',
-    'rest_framework',
+    'rest_framework', 
+    'corsheaders'     #external installed package
 ]
 
 
@@ -50,9 +51,29 @@ REST_FRAMEWORK = {
 }
 
 
+# ORIGINS FROM CORS-HEADERS
+CORS_ALLOWED_ORIGINS = [
+    "http://www.website.com",
+    "http://localhost:3000",
+    "http://localhost:4200",
+    "https://www.postman.com",
+]
+
+
+# METHODS ALLOWED FROM CORS-HEADERS
+CORS_ALLOW_METHODS = [
+    "GET",
+    "PUT",
+    "DELETE",
+    "POST"
+]
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',    # MIDDLEWARE FOR CORS-HEADERS
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

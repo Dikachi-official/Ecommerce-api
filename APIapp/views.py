@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .serializers import CategorySerializer, BookSerializer, ProductSerializer, UserSerializer, RegistrationSerializer
-from . models import Category, Book, Product
+from .serializers import CategorySerializer, BookSerializer, ProductSerializer, UserSerializer, RegistrationSerializer, CartSerializer
+from . models import Category, Book, Product, Cart
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework import status
@@ -75,3 +75,13 @@ class ListUser(generics.ListCreateAPIView):
 class DetailUser(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer    
+
+
+
+class ListCart(generics.ListCreateAPIView):
+    queryset  = Cart.objects.all()  
+    serializer_class = CartSerializer
+
+class DetailCart(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer      
