@@ -64,7 +64,8 @@ class Cart(models.Model):
     products = models.ManyToManyField(Product) #"    "   "   "  CART
 
     def __str__(self):
-        return f"(self.cart_id)"
+        return f'{self.cart_id}'
 
+    # ORDER
     class Meta:
         ordering = ['cart_id', '-created_at']

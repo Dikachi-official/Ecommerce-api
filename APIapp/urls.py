@@ -14,6 +14,6 @@ urlpatterns = [
     path('user', ListUser.as_view(), name = 'user'),
     path('user/<int:pk>', DetailUser.as_view(), name='detailuser'),
 
-    path('carts', ListCart.as_view(), name = 'cart'),
-    path('carts/<int:pk>', DetailCart.as_view(), name = 'detailcart')
+    path('cart/', ListCart.as_view(), name = 'cart'),
+    path('cart/<int:pk>', DetailCart.as_view(), name = 'detailcart')
 ]

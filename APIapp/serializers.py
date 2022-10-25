@@ -108,7 +108,10 @@ class CartUserSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'username',
-            'email'
+            'email',
+            'books',
+            'products',
+            'id'
         )
 
         model = User     # FROM DJANGO AUTH MODELS
@@ -116,7 +119,7 @@ class CartUserSerializer(serializers.ModelSerializer):
 
 #CART SERIALIZER
 class CartSerializer(serializers.ModelSerializer):
-
+    cart_id = CartUserSerializer(read_only=True, many=False)
     books = BookSerializer(read_only=True, many=True)
     products = ProductSerializer(read_only=True, many=True)
 
