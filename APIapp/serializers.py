@@ -130,5 +130,5 @@ class CartSerializer(serializers.ModelSerializer):
             'products',
             'books'
         )
-
+        # specific model
         model = Cart
