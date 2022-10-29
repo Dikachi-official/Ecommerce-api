@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render
 from rest_framework import generics
 from .serializers import CategorySerializer, BookSerializer, ProductSerializer, UserSerializer, RegistrationSerializer, CartSerializer
@@ -9,7 +10,7 @@ from rest_framework import permissions
 from rest_framework import serializers
 import uuid
 
-# Create your views here.
+
 
 
 

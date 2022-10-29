@@ -55,7 +55,6 @@ class Product(models.Model):
         ordering = ['-created_on']
 
 
-
 # FOR CART
 class Cart(models.Model):
     cart_id =  models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)
