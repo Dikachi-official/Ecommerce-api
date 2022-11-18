@@ -10,7 +10,7 @@ Ecommerce API built on Django rest framework
 <li> A web Browser (like Google Chrome...)</li>
 <li> A code editor (like VScode...)</li>
 </ul>
-<h2>Author</h2>
+<h2>Creator</h2>
 <p><i class="ri-account-circle-fill"></i>Dikachi-official</p>
 <h2>About</h2>
 <li>Implemented using Generic API view</li>
