@@ -1,5 +1,6 @@
 # Ecommerce-api
 Ecommerce API built on Django rest framework
+<hr/>
 <strong><i><p>Major Languages</p><i></strong>
 <input type="checkbox"><label for="title">PYTHON</label><br>
 <hr>
