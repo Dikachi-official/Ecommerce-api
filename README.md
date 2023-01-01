@@ -1,4 +1,4 @@
-# Ecommerce-api
+# Ecommerce-API
 Ecommerce API built on Django rest framework
 <hr/>
 <strong><i><p>Major Languages</p><i></strong>
