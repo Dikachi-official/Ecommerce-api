@@ -5,7 +5,7 @@ Ecommerce API built on Django rest framework
 <input type="checkbox"><label for="title">PYTHON</label><br>
 <hr>
 <h2>Framework</h2>
-<input type="checkbox"><label for="title">DJANGO REST FRAMEWORK</label><br>
+<li><label for="title">DJANGO REST FRAMEWORK</label></li><br>
 <h2>Prerequisites</h2>
 <ul>
 <li> A web Browser (like Google Chrome...)</li>
